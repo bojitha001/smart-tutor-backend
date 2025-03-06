@@ -2,7 +2,10 @@ import mongoose from "mongoose";
 
 export const connectDB = async () => {
     try {
-    const connnectionString = "mongodb+srv://smarttutor:smarttutor2025@cluster0.is6xv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+    const connnectionString = process.env.MONGODB_URI;
+    if(!connnectionString) {
+        throw new Error("Pleaes add the connection String")
+    }
     await mongoose.connect(connnectionString);
     console.log("DB connection successfull!")
     } catch (error) {

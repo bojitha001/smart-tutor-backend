@@ -42,4 +42,6 @@ export const updateTeacher = async (req, res) => {
         name:req.body.name,
         level:req.body.level
     })
+    return res.status(204).send();
 }
+
