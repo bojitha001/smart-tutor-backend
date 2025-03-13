@@ -1,12 +1,13 @@
+import { Request, Response } from "express";
 import Answer from "../infrastructure/schemas/answers";
 
-export const addAnswer = async (req, res) => {
+export const addAnswer = async (req: Request, res: Response) => {
   const answer = req.body;
   await Answer.create(answer);
   return res.status(201).send();
 };
 
-export const getAnswerByQuestionId = async (req, res) => {
+export const getAnswerByQuestionId = async (req: Request, res: Response) => {
   const { questionId } = req.query;
   console.log(questionId);
   if (questionId) {

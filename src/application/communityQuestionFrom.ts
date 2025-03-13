@@ -1,6 +1,7 @@
+import { Request, Response } from "express";
 import CommunityQuestionForm from "../infrastructure/schemas/communityQuestionFrom";
 
-export const getAllCommunityQuestionForm = async (req, res) => {
+export const getAllCommunityQuestionForm = async (req: Request, res: Response) => {
 
     const jobs = await CommunityQuestionForm.find(); // call the dtabse and find the data that get shaped as Job(model)
     // throw new Error("");
@@ -8,7 +9,7 @@ export const getAllCommunityQuestionForm = async (req, res) => {
   
 }
 
-export const createCommunityQuestionForm = async (req, res) => {
+export const createCommunityQuestionForm = async (req: Request, res: Response) => {
   const communityQuestionForm = req.body;
   const createCommunityQuestionForm = await CommunityQuestionForm.create(
     communityQuestionForm
@@ -16,7 +17,7 @@ export const createCommunityQuestionForm = async (req, res) => {
   return res.status(201).send();
 };
 
-export const getCommunityQuestionFormById = async (req, res) => {
+export const getCommunityQuestionFormById = async (req: Request, res: Response) => {
   const {id} = req.params;
   const commmunityQuestionForm = await CommunityQuestionForm.findById(id);
   if (commmunityQuestionForm === null) {
@@ -25,7 +26,7 @@ export const getCommunityQuestionFormById = async (req, res) => {
   return res.status(200).json(commmunityQuestionForm);
 }
 
-export const getCommunityQuestionForm = async (req, res) => {
+export const getCommunityQuestionForm = async (req: Request, res: Response) => {
   // try {
   const { communityId } = req.query; //const jobId = req.query.jobId;
   console.log(communityId);
