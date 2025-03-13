@@ -3,6 +3,9 @@ import express from "express";
 import teachersRouter from "./api/availableTeachers";
 import { connectDB } from "./infrastructure/db";
 import cors from "cors"
+import communityRouter from "./api/communities";
+import communityQuestionFormRouter from "./api/communityQuestionFrom";
+import answersRouter from "./api/answers";
 
 const app = express();
 app.use(express.json());
@@ -16,8 +19,9 @@ connectDB();
 
 
 app.use("/teachers",teachersRouter);
-app.use("/kuppiGroups")
-
+app.use('/communities', communityRouter);
+app.use('/comunityQuestions', communityQuestionFormRouter);
+app.use('/answers',answersRouter);
 
 const PORT = 8080;
-app.listen(PORT, () => console.log(`Server is listening on port${PORT} .`));
+app.listen(PORT, () => console.log(`Server is listening on port${PORT}.`));
