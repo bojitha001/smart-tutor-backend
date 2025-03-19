@@ -9,6 +9,10 @@ const communityQuestionForm = new mongoose.Schema({
         type: String,
         required: true,
     },
+    userName: {
+        type: String,
+        required: true
+    },
     topic: {
         type:String,
         required: true,
@@ -22,6 +26,10 @@ const communityQuestionForm = new mongoose.Schema({
         ref: "Community", //reference to the Community
         require: true,
     },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    }
 });
 
 const CommunityQuestionForm = mongoose.model('CommunityQuestionForm',communityQuestionForm );
