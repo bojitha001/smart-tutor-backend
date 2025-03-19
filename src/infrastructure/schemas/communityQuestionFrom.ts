@@ -5,6 +5,10 @@ const communityQuestionForm = new mongoose.Schema({
         type:String,
         required: true,
     },
+    userImageUrl: {
+        type: String,
+        required: true,
+    },
     topic: {
         type:String,
         required: true,
