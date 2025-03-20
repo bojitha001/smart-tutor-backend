@@ -4,7 +4,7 @@ import { requireAuth } from "@clerk/express";
 
 const communityRouter = express.Router();
 
-communityRouter.route('/').get(requireAuth(), getAllCommunities).post(requireAuth(), addCommunity);
-communityRouter.route('/:id').get(requireAuth(), getCommunityById);
+communityRouter.route('/').get(getAllCommunities).post(addCommunity);
+communityRouter.route('/:id').get(getCommunityById);
 
 export default communityRouter;

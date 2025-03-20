@@ -5,7 +5,7 @@ import { requireAuth } from "@clerk/express";
 
 const communityQuestionFormRouter = express.Router();
 
-communityQuestionFormRouter.route('/').get(requireAuth(), getCommunityQuestionForm).post(requireAuth(), createCommunityQuestionForm);
-communityQuestionFormRouter.route('/:id').get(requireAuth(), getCommunityQuestionFormById);
+communityQuestionFormRouter.route('/').get(getCommunityQuestionForm).post(requireAuth(), createCommunityQuestionForm);
+communityQuestionFormRouter.route('/:id').get(getCommunityQuestionFormById);
 
 export default communityQuestionFormRouter;
