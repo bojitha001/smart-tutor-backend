@@ -1,6 +1,22 @@
 import mongoose from "mongoose";
 
 const answersSchema = new mongoose.Schema({
+    userId: {
+        type:String,
+        required: true,
+    },
+    userImageUrl: {
+        type: String,
+        required: true,
+    },
+    userName: {
+        type: String,
+        required: true
+    },
+    userEmail: {
+        type: String,
+        required: true
+    },
     answers: {
         type: [String],
         required: true,
@@ -10,6 +26,10 @@ const answersSchema = new mongoose.Schema({
         ref: "CommunityQuestionForm",
         require: true,
     },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    }
 });
 
 const Answer = mongoose.model('Answer', answersSchema);
