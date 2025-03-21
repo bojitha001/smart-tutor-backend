@@ -6,7 +6,7 @@ import cors from "cors"
 import communityRouter from "./api/communities";
 import communityQuestionFormRouter from "./api/communityQuestionFrom";
 import answersRouter from "./api/answers";
-import updateUserRoleRouter from "./api/user";
+// import updateUserRoleRouter from "./api/user";
 
 const app = express();
 app.use(express.json());
@@ -23,7 +23,7 @@ app.use("/teachers",teachersRouter);
 app.use('/communities', communityRouter);
 app.use('/comunityQuestions', communityQuestionFormRouter);
 app.use('/answers',answersRouter);
-app.use('/user', updateUserRoleRouter);
+// app.use('/user', updateUserRoleRouter);
 
 const PORT = 8080;
 app.listen(PORT, () => console.log(`Server is listening on port${PORT}.`));
