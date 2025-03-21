@@ -6,7 +6,9 @@ const AuthorizationMiddleware = (
     res: Response,
     next: NextFunction
     ) => {
-        if(req.auth.claims.metadata.role !== "admin" || req.auth.claims.metadata.role !== "tutor" || req.auth.claims.metadata.role !== "student"){
+        const roles = (req as any).auth?.claims?.metadata?.role;
+
+        if(roles !== "tutor" && roles !== "student"){
             throw new ForbiddenError("Logged user only route");
         }
         next();
