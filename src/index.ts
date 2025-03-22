@@ -7,6 +7,9 @@ import communityRouter from "./api/communities";
 import communityQuestionFormRouter from "./api/communityQuestionFrom";
 import answersRouter from "./api/answers";
 import updateUserRoleRouter from "./api/user";
+import classesRouter from "./api/classes";
+import studentRouter from "./api/students";
+import { clerkClient } from '@clerk/clerk-sdk-node';
 
 const app = express();
 app.use(express.json());
@@ -24,6 +27,8 @@ app.use('/communities', communityRouter);
 app.use('/comunityQuestions', communityQuestionFormRouter);
 app.use('/answers',answersRouter);
 app.use('/user', updateUserRoleRouter);
+app.use('/classes', classesRouter);
+app.use('/students', studentRouter);
 
 const PORT = 8080;
 app.listen(PORT, () => console.log(`Server is listening on port${PORT}.`));

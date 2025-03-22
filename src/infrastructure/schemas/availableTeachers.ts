@@ -1,6 +1,15 @@
 import mongoose from "mongoose";
 
 const teachersSchema = new mongoose.Schema({
+  clerkId: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  userImageUrl: {
+    type: String,
+    required: true,
+  },
   name: {
     type: String,
     required: true,
@@ -13,9 +22,13 @@ const teachersSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  level: {
+  contactNo: {
     type: String,
     required: true,
+  },
+  level: {
+    type: String,
+    // required: true,
   },
   bio: {
     type: String,
@@ -23,15 +36,15 @@ const teachersSchema = new mongoose.Schema({
   },
   price: {
     type: String,
-    required: true,
+    // required: true,
   },
   reviews: {
     type: String,
-    required: true,
+    // required: true,
   },
   lessons: {
     type: String,
-    required: true,
+    // required: true,
   },
 });
 
