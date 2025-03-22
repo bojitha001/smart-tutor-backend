@@ -1,0 +1,67 @@
+[
+    {
+      "question": "Hello",
+      "answer": "Hi there! Welcome to our smart tutoring platform. How can I help you today?",
+      "keywords": ["hi", "hello", "hey", "greetings", "howdy"]
+    },
+    {
+      "question": "How are you",
+      "answer": "I'm doing well, thanks for asking! I'm here to help you with any questions about our tutoring platform.",
+      "keywords": ["how are you", "how's it going", "what's up", "how do you do"]
+    },
+    {
+      "question": "How do I find a tutor?",
+      "answer": "You can find a tutor by navigating to the \"Find Tutors\" page from the main menu. There you can filter tutors by subject, availability, and ratings. Our advanced matching system will help you find the perfect tutor based on your learning style and goals.",
+      "keywords": ["find", "tutor", "search", "locate", "teacher"]
+    },
+    {
+      "question": "What subjects are available?",
+      "answer": "We offer tutoring in a wide range of subjects including:\n\n• Mathematics (Algebra, Calculus, Statistics, etc.)\n• Sciences (Physics, Chemistry, Biology)\n• Languages (English, Spanish, French, and more)\n• Humanities (History, Literature, Philosophy)\n• Computer Science & Coding\n• Test Preparation (SAT, ACT, GRE, GMAT)\n\nYou can view all available subjects on the \"Subjects\" page or use the search function to find specific topics.",
+      "keywords": ["subject", "course", "topic", "teach", "available"]
+    },
+    {
+      "question": "How do I schedule a session?",
+      "answer": "To schedule a tutoring session:\n\n1. First, select a tutor from your matched results or browse page\n2. Click on \"Book Session\" on their profile page\n3. Choose an available time slot from their calendar\n4. Select the session duration (30, 45, or 60 minutes)\n5. Add any specific topics or questions you want to cover\n6. Confirm and complete the booking\n\nYou'll receive an email confirmation with a link to join the virtual classroom when it's time for your session.",
+      "keywords": ["schedule", "book", "session", "appointment", "time"]
+    },
+    {
+      "question": "What are the pricing plans?",
+      "answer": "We offer several flexible pricing options to fit your needs:\n\n• Pay-per-session: Starting at $25/hour (varies by tutor)\n• Monthly packages: Get 4 sessions per month at a discounted rate\n• Subject packages: Focus on one subject with 10 sessions at our best rate\n• Premium membership: Unlimited access to group sessions and resources\n\nVisit our \"Pricing\" page for complete details. New users get their first 30-minute session free to try the platform!",
+      "keywords": ["price", "cost", "payment", "plan", "subscription"]
+    },
+    {
+      "question": "How do I create an account?",
+      "answer": "Creating an account is simple:\n\n1. Click on the \"Sign Up\" button in the top right corner of the homepage\n2. Enter your email address and create a password\n3. Fill out basic profile information (name, grade level/education)\n4. Verify your email by clicking the link in the confirmation email\n5. Complete your learning profile to get matched with the best tutors\n\nThe entire process takes less than 5 minutes, and you can start browsing tutors immediately.",
+      "keywords": ["create", "account", "register", "sign up", "join"]
+    },
+    {
+      "question": "How do I login to my account?",
+      "answer": "To login to your account:\n\n1. Click on the \"Login\" button in the top right corner of the homepage\n2. Enter your registered email address\n3. Enter your password\n4. Click \"Login\"\n\nYou can also use the \"Remember me\" option for quicker access on your personal devices. If you forgot your password, use the \"Forgot Password\" link to reset it.",
+      "keywords": ["login", "sign in", "access", "account", "enter"]
+    },
+    {
+      "question": "Can I change my password?",
+      "answer": "Yes, you can change your password at any time:\n\n1. Go to \"My Profile\" in the top navigation menu\n2. Select \"Account Settings\" from the dropdown\n3. Click on \"Change Password\"\n4. Enter your current password\n5. Enter and confirm your new password\n6. Click \"Save Changes\"\n\nWe recommend using a strong, unique password for your account security.",
+      "keywords": ["change", "password", "reset", "forgot", "security"]
+    },
+    {
+      "question": "How do I communicate with my tutor?",
+      "answer": "You have several ways to communicate with your tutor:\n\n1. In-session: Use our virtual classroom with video, audio, chat, and whiteboard\n2. Messaging: Send messages through our platform's inbox system\n3. Session notes: Review shared notes and resources from your sessions\n4. Pre-session questions: Add questions when booking to help tutors prepare\n\nTo message a tutor, go to \"My Sessions\" > select the session > \"Message Tutor\". All communication is kept secure within our platform.",
+      "keywords": ["communicate", "contact", "message", "tutor", "chat"]
+    },
+    {
+      "question": "How do online tutoring sessions work?",
+      "answer": "Our online tutoring sessions take place in our interactive virtual classroom:\n\n1. At your scheduled time, log in and click \"Join Session\" from your dashboard\n2. Connect your camera and microphone when prompted (optional but recommended)\n3. Use the interactive whiteboard for diagrams and problem-solving\n4. Share documents, screens, or specific applications as needed\n5. Access specialized tools for different subjects (math equations, code editor, etc.)\n6. Save notes and recorded sessions for later review\n\nOur platform works on most modern browsers without requiring any downloads or installations.",
+      "keywords": ["online", "virtual", "session", "work", "classroom"]
+    },
+    {
+      "question": "What if I need to cancel a session?",
+      "answer": "If you need to cancel a scheduled session:\n\n1. Go to \"My Sessions\" in your dashboard\n2. Find the upcoming session you need to cancel\n3. Click on \"Cancel Session\"\n4. Select a reason for cancellation (optional)\n5. Confirm your cancellation\n\nOur cancellation policy:\n• Free cancellation with full refund if cancelled 24+ hours before the session\n• 50% refund if cancelled between 12-24 hours before\n• No refund for cancellations less than 12 hours before\n\nEmergencies are handled on a case-by-case basis by contacting support.",
+      "keywords": ["cancel", "reschedule", "refund", "session"]
+    },
+    {
+      "question": "What is Smart Tutor?",
+      "answer": "Smart Tutor is an innovative online tutoring platform that connects students with expert tutors across a wide range of subjects. Our platform features:\n\n• Personalized matching algorithm to find the perfect tutor for your learning style\n• Interactive virtual classroom with video, audio, chat, and collaborative tools\n• Flexible scheduling with options for one-time sessions or recurring appointments\n• Comprehensive resource library with study materials and practice problems\n• Progress tracking to monitor your academic improvement\n\nOur mission is to make quality education accessible to everyone, providing personalized support to help students achieve their academic goals.",
+      "keywords": ["what is", "about", "platform", "explain", "smart tutor"]
+    }
+  ]
