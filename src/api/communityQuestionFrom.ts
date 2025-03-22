@@ -5,7 +5,7 @@ import AuthorizationMiddleware from "./middleware/authorization-middleware";
 
 const communityQuestionFormRouter = express.Router();
 
-communityQuestionFormRouter.route('/').get(getCommunityQuestionForm).post(createCommunityQuestionForm);
+communityQuestionFormRouter.route('/').get(getCommunityQuestionForm).post(requireAuth(),createCommunityQuestionForm);
 communityQuestionFormRouter.route('/:id').get(getCommunityQuestionFormById);
 
 export default communityQuestionFormRouter;
