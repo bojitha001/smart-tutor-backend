@@ -6,6 +6,7 @@ import cors from "cors"
 import communityRouter from "./api/communities";
 import communityQuestionFormRouter from "./api/communityQuestionFrom";
 import answersRouter from "./api/answers";
+import chatbotRouter from "./api/chatbot";
 // import updateUserRoleRouter from "./api/user";
 
 const app = express();
@@ -24,6 +25,7 @@ app.use('/communities', communityRouter);
 app.use('/comunityQuestions', communityQuestionFormRouter);
 app.use('/answers',answersRouter);
 // app.use('/user', updateUserRoleRouter);
+app.use('/chatbot', chatbotRouter);
 
 const PORT = 8080;
 app.listen(PORT, () => console.log(`Server is listening on port${PORT}.`));
