@@ -1,10 +1,10 @@
-import express from "express"
-import { updateUserRole } from "../application/user";
-import { requireAuth } from "@clerk/express";
-// import AuthorizationMiddleware from "./middleware/authorization-middleware";
+// import express from "express"
+// import { updateUserRole } from "../application/user";
+// import { requireAuth } from "@clerk/clerk-sdk-node";
+// // import AuthorizationMiddleware from "./middleware/authorization-middleware";
 
-const updateUserRoleRouter = express.Router();
+// const updateUserRoleRouter = express.Router();
 
-updateUserRoleRouter.route('/').post(updateUserRole);
+// updateUserRoleRouter.route('/').post(requireAuth(), updateUserRole);
 
-export default updateUserRoleRouter;
+// export default updateUserRoleRouter;
