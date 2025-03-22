@@ -6,7 +6,7 @@ import cors from "cors"
 import communityRouter from "./api/communities";
 import communityQuestionFormRouter from "./api/communityQuestionFrom";
 import answersRouter from "./api/answers";
-import updateUserRoleRouter from "./api/user";
+// import updateUserRoleRouter from "./api/user";
 import classesRouter from "./api/classes";
 import studentRouter from "./api/students";
 import { clerkClient } from '@clerk/clerk-sdk-node';
@@ -26,7 +26,7 @@ app.use("/teachers",teachersRouter);
 app.use('/communities', communityRouter);
 app.use('/comunityQuestions', communityQuestionFormRouter);
 app.use('/answers',answersRouter);
-app.use('/user', updateUserRoleRouter);
+// app.use('/user', updateUserRoleRouter);
 app.use('/classes', classesRouter);
 app.use('/students', studentRouter);
 
