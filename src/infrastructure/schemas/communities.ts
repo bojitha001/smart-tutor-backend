@@ -9,6 +9,9 @@ const communitiesSchema = new mongoose.Schema({
         type: String,
         require:true,
     },
+    imageUrl: {
+        type: String
+    }
 });
 
 const Community = mongoose.model("Community", communitiesSchema);

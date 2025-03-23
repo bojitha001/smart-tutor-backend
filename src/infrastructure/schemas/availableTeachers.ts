@@ -26,6 +26,10 @@ const teachersSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  keyWords: {
+    type: [String],
+    required: true,
+  },
   level: {
     type: String,
     // required: true,

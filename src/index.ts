@@ -11,6 +11,7 @@ import classesRouter from "./api/classes";
 import studentRouter from "./api/students";
 import { clerkClient } from '@clerk/clerk-sdk-node';
 import chatbotRouter from "./api/chatbot";
+import bookingsRouter from "./api/bookings";
 
 const app = express();
 app.use(express.json());
@@ -30,6 +31,7 @@ app.use('/answers',answersRouter);
 // app.use('/user', updateUserRoleRouter);
 app.use('/classes', classesRouter);
 app.use('/students', studentRouter);
+app.use('/bookings', bookingsRouter);
 app.use('/chatbot', chatbotRouter);
 
 const PORT = 8080;

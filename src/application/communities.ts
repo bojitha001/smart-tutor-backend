@@ -22,3 +22,18 @@ export const addCommunity = async (req: Request, res: Response) => {
   await Community.create(commmunity);
   return res.status(201).send();
 };
+
+export const updateCommunity = async (req, res) => {
+  const communityToUpdate = Community.findById(req.params.id);
+  if(!communityToUpdate) {
+    console.log("Community not found");
+    return res.status(400).send();
+  }
+
+  await Community.findByIdAndUpdate(req.params.id, {
+    name: req.body.name,
+    members: req.body.members,
+    imageUrl: req.body.imageUrl,
+  });
+  return res.status(204).send();
+}
