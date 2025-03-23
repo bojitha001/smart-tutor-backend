@@ -2,11 +2,10 @@ import Student from "../infrastructure/schemas/students";
 import { clerkClient } from '@clerk/clerk-sdk-node';
 import { Request, Response } from "express";
 
-export const getALlStudents =  async (req:Request, res: Response) => {
+export const getAllStudents =  async (req:Request, res: Response) => {
     const students =  await Student.find();
     return res.status(200).json(students);
 }
-
 
 export const addStudent = async (req:Request, res: Response) => {
     const student = req.body;
@@ -20,7 +19,20 @@ export const getStudentById = async (req:Request, res: Response) => {
     if(!student) {
         return res.status(404).send();
     }
-    return res.status(200).send(student);
+    return res.json(student);
+}
+
+export const updateStudent = async (req: Request, res: Response) => {
+    const studentToUpdate = Student.findById(req.params.id);
+    if(!studentToUpdate){
+        return res.status(404).send();
+    }
+
+    await Student.findByIdAndUpdate(req.params.id, {
+        name:req.body.name,
+        level:req.body.level
+    })
+    return res.status(204).send();
 }
 
 // export const createStudent = async (req:Request, res: Response) => {
