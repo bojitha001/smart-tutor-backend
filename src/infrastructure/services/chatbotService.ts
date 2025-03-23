@@ -123,12 +123,12 @@ export function getResponseFromFAQ(userQuestion: string): FAQResponse {
     }
   });
   
-  if (bestMatch && highestConfidence > 0.6) {
-    return {
-      answer: bestMatch.answer,
-      confidence: highestConfidence
-    };
-  }
+  // if (bestMatch && highestConfidence > 0.6) {
+  //   return {
+  //     answer: bestMatch.answer,
+  //     confidence: highestConfidence
+  //   };
+  // }
   
   // If no good match, provide a low confidence
   return {
