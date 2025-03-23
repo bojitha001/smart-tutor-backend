@@ -88,7 +88,7 @@ export const getClass = async (req:Request, res: Response) => {
       console.error('Error fetching classes:', error);
       return res.status(500).json({
         message: 'Internal server error',
-        error: error.message
+        // error: error.message
       });
     }
   };
