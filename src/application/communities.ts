@@ -23,7 +23,7 @@ export const addCommunity = async (req: Request, res: Response) => {
   return res.status(201).send();
 };
 
-export const updateCommunity = async (req, res) => {
+export const updateCommunity = async (req: Request, res: Response) => {
   const communityToUpdate = Community.findById(req.params.id);
   if(!communityToUpdate) {
     console.log("Community not found");
