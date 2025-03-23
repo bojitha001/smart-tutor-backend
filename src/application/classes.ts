@@ -20,7 +20,7 @@ export const getClassById = async (req:Request, res: Response) => {
   if (!getClass) {
     return res.status(404).send();
   }
-  return res.status(getClass);
+  return res.status(200).json(getClass);
 };
 
 export const getClass = async (req:Request, res: Response) => {
