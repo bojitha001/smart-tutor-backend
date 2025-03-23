@@ -14,9 +14,22 @@ const bookingsSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  studentEmail: {
+    type: String,
+    required: true,
+  },
   studentImageUrl: {
     type: String,
   },
+  paymentStatus: {
+    type: String,
+    enum: ['Pending', 'Done'],
+    default: 'Pending'
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 const Booking = mongoose.model("Booking", bookingsSchema);
