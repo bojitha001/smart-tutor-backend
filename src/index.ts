@@ -12,6 +12,7 @@ import studentRouter from "./api/students";
 import { clerkClient } from '@clerk/clerk-sdk-node';
 import chatbotRouter from "./api/chatbot";
 import bookingsRouter from "./api/bookings";
+import announcementRouter from "./api/announcements";
 
 const app = express();
 app.use(express.json());
@@ -33,6 +34,7 @@ app.use('/classes', classesRouter);
 app.use('/students', studentRouter);
 app.use('/bookings', bookingsRouter);
 app.use('/chatbot', chatbotRouter);
+app.use('/announcements', announcementRouter);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => console.log(`Server is listening on port ${PORT}.`));
