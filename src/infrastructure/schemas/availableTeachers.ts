@@ -34,9 +34,17 @@ const teachersSchema = new mongoose.Schema({
     type: String,
     // required: true,
   },
+  experience: {
+    type: [String],
+    required: true,
+  },
   bio: {
     type: String,
     required: true,
+  },
+  submissionCount: {
+    type: Boolean,
+    // required: true,
   },
   price: {
     type: String,

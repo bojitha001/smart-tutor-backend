@@ -1,28 +1,29 @@
 import Class from "../infrastructure/schemas/classes";
 import Teacher from "../infrastructure/schemas/availableTeachers";
 import Student from "../infrastructure/schemas/students";
+import { Request, Response } from "express";
 
-export const getAllClasses = async (req, res) => {
+export const getAllClasses = async (req:Request, res: Response) => {
   const classes = await Class.find();
   return res.status(200).json(classes);
 };
 
-export const addClass = async (req, res) => {
+export const addClass = async (req:Request, res: Response) => {
   const addClass = req.body;
   await Class.create(addClass);
   return res.status(201).send();
 };
 
-export const getClassById = async (req, res) => {
+export const getClassById = async (req:Request, res: Response) => {
   console.log(req.params);
   const getClass = await Class.findById(req.params.id);
   if (!getClass) {
     return res.status(404).send();
   }
-  return res.status(getClass);
+  return res.status(200).json(getClass);
 };
 
-export const getClass = async (req, res) => {
+export const getClass = async (req:Request, res: Response) => {
     const { teacherClerkId, studentClerkId } = req.query;
   
     try {
@@ -87,7 +88,7 @@ export const getClass = async (req, res) => {
       console.error('Error fetching classes:', error);
       return res.status(500).json({
         message: 'Internal server error',
-        error: error.message
+        // error: error.message
       });
     }
   };
