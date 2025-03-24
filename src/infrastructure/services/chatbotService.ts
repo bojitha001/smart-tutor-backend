@@ -4,13 +4,13 @@ import fs from 'fs';
 import path from 'path';
 import { FAQ, ChatSession, FAQResponse } from '../../domain/errors/models/chatbot';
 
-// Initialize environment variables
+
 dotenv.config();
 
-// In-memory storage for chat sessions
+
 const chatSessions: Record<string, ChatSession> = {};
 
-// Load FAQs from external file if it exists, otherwise use default
+
 let faqs: FAQ[] = [];
 const faqPath = path.join(__dirname, '../../data/faqs.json');
 
@@ -20,18 +20,17 @@ try {
     faqs = JSON.parse(faqData);
     console.log(`Loaded ${faqs.length} FAQs from file`);
   } else {
-    // Default FAQs if file doesn't exist
+   
     faqs = [
-      // Add your default FAQs here
       {
         question: 'Hello',
         answer: 'Hi there! Welcome to Smart Tutor. How can I help you today?',
         keywords: ['hi', 'hello', 'hey']
       },
-      // More FAQs...
+      
     ];
     
-    // Save default FAQs for future use
+    
     try {
       if (!fs.existsSync(path.dirname(faqPath))) {
         fs.mkdirSync(path.dirname(faqPath), { recursive: true });
@@ -44,7 +43,7 @@ try {
   }
 } catch (err) {
   console.error('Error loading FAQs:', err);
-  // Set default FAQs if there's an error
+  
   faqs = [
     {
       question: 'Hello',
@@ -54,9 +53,8 @@ try {
   ];
 }
 
-// Function to get response from FAQ with better handling for short messages
 export function getResponseFromFAQ(userQuestion: string): FAQResponse {
-  // Handle empty messages
+ 
   if (!userQuestion || userQuestion.trim() === '') {
     return {
       answer: "I didn't catch that. How can I help you with our tutoring platform?",
@@ -66,10 +64,10 @@ export function getResponseFromFAQ(userQuestion: string): FAQResponse {
   
   const normalizedQuestion = userQuestion.toLowerCase().trim();
   
-  // Special handling for very short messages (likely greetings)
+
   if (normalizedQuestion.length < 5) {
-    // Check greeting keywords
-    for (const faq of faqs.slice(0, 2)) { // Check only the greeting FAQs
+    
+    for (const faq of faqs.slice(0, 2)) { 
       if (faq.keywords.includes(normalizedQuestion)) {
         return {
           answer: faq.answer,
@@ -79,7 +77,7 @@ export function getResponseFromFAQ(userQuestion: string): FAQResponse {
     }
   }
   
-  // Check for exact match first
+  
   for (const faq of faqs) {
     if (normalizedQuestion === faq.question.toLowerCase()) {
       return {
@@ -89,11 +87,11 @@ export function getResponseFromFAQ(userQuestion: string): FAQResponse {
     }
   }
   
-  // Check for keyword matches
+  
   let bestMatch: FAQ | null = null;
   let highestConfidence = 0;
   
-  // Regular fuzzy matching for queries
+  
   faqs.forEach(faq => {
     const questionWords = normalizedQuestion.split(' ');
     const faqWords = faq.question.toLowerCase().split(' ');
@@ -110,11 +108,11 @@ export function getResponseFromFAQ(userQuestion: string): FAQResponse {
       }
     });
     
-    // Weight both word overlap and keyword matches
+    
     const wordConfidence = commonWords / Math.max(questionWords.length, faqWords.length);
     const keywordConfidence = keywordMatches > 0 ? keywordMatches / faq.keywords.length : 0;
     
-    // Final confidence is weighted average (keywords matter more)
+    
     const confidence = (wordConfidence * 0.4) + (keywordConfidence * 0.6);
     
     if (confidence > highestConfidence) {
@@ -125,28 +123,26 @@ export function getResponseFromFAQ(userQuestion: string): FAQResponse {
   
   if (bestMatch && highestConfidence > 0.6) {
     return {
-      answer: bestMatch.answer,
+      answer: (bestMatch as FAQ).answer,
       confidence: highestConfidence
     };
   }
   
-  // If no good match, provide a low confidence
+  
   return {
     answer: "I'm not sure I understand. Could you try rephrasing your question?",
     confidence: 0
   };
 }
 
-// Function to get Google Gemini API response
+
 export async function getGeminiResponse(sessionId: string, message: string): Promise<string> {
   try {
-    // Check if API key exists
+   
     if (!process.env.GOOGLE_GEMINI_API_KEY) {
       console.warn('Google Gemini API key is not set. Falling back to generic response.');
       return "I don't have a specific answer for that question. Please ask something about our tutoring services.";
     }
-
-    // Get or create a session
     if (!chatSessions[sessionId]) {
       chatSessions[sessionId] = {
         id: sessionId,
@@ -173,7 +169,6 @@ export async function getGeminiResponse(sessionId: string, message: string): Pro
       };
     }
 
-    // Update session with the new message
     const session = chatSessions[sessionId];
     session.messages.push({
       role: 'user',
@@ -181,22 +176,18 @@ export async function getGeminiResponse(sessionId: string, message: string): Pro
     });
     session.lastActivity = new Date();
 
-    // Keep only the most recent messages if the conversation gets too long
     if (session.messages.length > 20) {
-      // Keep the system message and the most recent messages
       const systemMessage = session.messages.find(msg => msg.role === 'system');
       const recentMessages = session.messages.slice(-19).filter(msg => msg.role !== 'system');
       session.messages = systemMessage ? [systemMessage, ...recentMessages] : recentMessages;
     }
 
-    // Format the history for Gemini API
-    // We need to exclude the system message as Gemini handles it differently
     const contentMessages = session.messages.filter(msg => msg.role !== 'system');
 
-    // Get system message if it exists
+   
     const systemMessage = session.messages.find(msg => msg.role === 'system')?.parts[0].text || '';
 
-    // Using Google's Gemini API
+    
     const apiEndpoint = 'https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent';
     
     const response = await fetch(`${apiEndpoint}?key=${process.env.GOOGLE_GEMINI_API_KEY}`, {
@@ -229,16 +220,15 @@ export async function getGeminiResponse(sessionId: string, message: string): Pro
 
     const data = await response.json() as any;
     
-    // Check if there's an error in the API response
+    
     if (data.error) {
       console.error('Gemini API error:', data.error);
       return "I'm having trouble processing your question right now. Please try asking something else.";
     }
     
-    // Extract text from the response
+    
     const geminiMessage = data.candidates[0].content.parts[0].text;
     
-    // Save the assistant's response to the session
     session.messages.push({
       role: 'model',
       parts: [{ text: geminiMessage }]
@@ -251,11 +241,9 @@ export async function getGeminiResponse(sessionId: string, message: string): Pro
   }
 }
 
-// Handle simple responses without needing AI
 export function getSimpleResponse(message: string): string | null {
   const normalizedMessage = message.toLowerCase().trim();
   
-  // Simple greeting responses
   if (['hi', 'hello', 'hey', 'howdy'].includes(normalizedMessage)) {
     return "Hello! I'm your Smart Tutor AI assistant. How can I help you with your learning journey today?";
   }
@@ -272,12 +260,9 @@ export function getSimpleResponse(message: string): string | null {
     return "Goodbye! Feel free to come back anytime you need help with your studies or have questions about our tutoring services. Happy learning!";
   }
   
-  // No simple match
   return null;
 }
 
-// Function to get suggested questions
 export function getSuggestedQuestions(): string[] {
-  // Get common questions from FAQ, skipping greeting FAQs
   return faqs.slice(2, 8).map(faq => faq.question);
 }
